@@ -13,7 +13,7 @@ from helpers import SqlQueries
 default_args = {
     'owner': 'Gaurav',
     'start_date': datetime(2019, 1, 12),
-	'depends_on_past': False
+    'depends_on_past': False
 }
 
 with DAG(dag_id='sparkify_data_pipeline', default_args=args, schedule_interval='0 0 * * *', schedule_interval=None, description='Load and transform data in Redshift with Airflow') as dag:
