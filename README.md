@@ -32,13 +32,7 @@ The three most important advantages of using Star schema are:
 * **Plugins**:
   * **helpers**: sql_queries.py contains SQL queries used in ETL process
   * **operators**:
-    * stage_redshift.py 
-    
-
-
-
-
-## Configuration
-Make sure to add the following Airflow connections:
-* AWS credentials
-* Connection to Postgres database
+    * stage_redshift.py contains StageToRedshiftOperator, which loads JSON data from S3 to staging tables in the Redshift 
+    * load_dimension.py contains LoadDimensionOperator, which loads a dimension table from data in the staging table(s)
+    * load_fact.py contains LoadFactOperator, which loads a fact table from data in the staging table(s)
+    * data_quality.py contains DataQualityOperator, which runs a data quality check by passing an SQL query and expected result as arguments, failing if the results don't match
