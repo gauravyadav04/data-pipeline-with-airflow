@@ -53,7 +53,7 @@ with DAG(dag_id='sparkify_data_pipeline', default_args=args, schedule_interval='
 		redshift_conn_id='redshift',
 		table='songplays',
 		select_sql=SqlQueries.songplay_table_insert
-    )
+	)
 	
 	
 	load_user_dimension_table = LoadDimensionOperator(
@@ -61,14 +61,14 @@ with DAG(dag_id='sparkify_data_pipeline', default_args=args, schedule_interval='
 		redshift_conn_id='redshift',
 		table='users',
 		select_sql=SqlQueries.user_table_insert
-    )
+	)
 	
 	load_song_dimension_table = LoadDimensionOperator(
 		task_id='Load_song_dimension_table',
 		redshift_conn_id='redshift',
 		table='songs',
 		select_sql=SqlQueries.song_table_insert
-    )
+	)
 
 	load_artist_dimension_table = LoadDimensionOperator(
 		task_id='Load_artist_dimension_table',
@@ -77,21 +77,21 @@ with DAG(dag_id='sparkify_data_pipeline', default_args=args, schedule_interval='
 		select_sql=SqlQueries.artist_table_insert,
 		append_insert=True,
 		primary_key="artistid"
-    )
+	)
 
 	load_time_dimension_table = LoadDimensionOperator(
 		task_id='Load_time_dimension_table',
 		redshift_conn_id='redshift',
 		table='time',
 		select_sql=SqlQueries.time_table_insert
-    )
+    	)
 
 	run_quality_checks = DataQualityOperator(
 		task_id='Run_data_quality_checks',
 		redshift_conn_id='redshift',
 		test_query='select count(*) from songs where songid is null;',
 		expected_result=0
-    )
+    	)
 
 	end_operator = DummyOperator(task_id='Stop_execution')
 	
