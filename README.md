@@ -1,4 +1,4 @@
-# Data Pipeline with Airflow
+# Data Pipelines with Airflow
 Data Engineering Nanodegree Program - Project 5
 
 
