@@ -1,5 +1,4 @@
 # Data Pipelines with Airflow
-Data Engineering Nanodegree Program - Project 5
 
 
 The objective of this project is to build high grade dynamic data pipeline allowing for easy monitoring and data backfills. The ETL pipeline extracts song and events log data from S3 bucket, stages them in Redshift, and transforms data into a set of dimensional tables for their analytics team to continue finding insights about user activity on their app.
