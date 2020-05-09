@@ -4,7 +4,7 @@ from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
                                 LoadDimensionOperator, DataQualityOperator,
-				PostgresOperator)
+				                PostgresOperator)
 from helpers import SqlQueries
 
 # AWS_KEY = os.environ.get('AWS_KEY')
@@ -16,7 +16,7 @@ default_args = {
     'depends_on_past': False
 }
 
-with DAG(dag_id='sparkify_data_pipeline', default_args=args, schedule_interval='0 0 * * *', description='Load and transform data in Redshift with Airflow') as dag:
+with DAG(dag_id='sparkify_data_pipeline', default_args=default_args, schedule_interval='0 0 * * *', description='Load and transform data in Redshift with Airflow') as dag:
 
 	start_operator = DummyOperator(task_id='Begin_execution')
 	

@@ -67,6 +67,3 @@ class StageToRedshiftOperator(BaseOperator):
             self.copy_json_option
         )
         redshift.run(formatted_sql)
-
-
-
